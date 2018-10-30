@@ -14,6 +14,9 @@ version 5.2.0
  ```sh
  npm start
  ```
+ 
+# Deploy on cloud
+gcloud app deploy
 
 # Project structure
 
