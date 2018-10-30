@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1 class="display-4">
+      <span translate>Formulaire d'envoi</span>
+    </h1>
+      <div class="my-4">
+        <div>Auteur :</div>
+        <input #auteur>
+      </div>
+      <div class="my-4">
+        <div>Catégorie :</div>
+        <select #categorie>
+          <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+        </select>
+      </div>
+      <div class="my-4">
+        <div>Phrase : </div>
+        <textarea #phrase></textarea>
+      </div>
+      <button class="btn btn-primary btn-lg" (click)="sendPhrase(auteur.value, categorie.value, phrase.value)">Envoyer</button>
+  </div>
+</div>
