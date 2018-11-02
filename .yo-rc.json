@@ -1,0 +1,19 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.2.0",
+    "props": {
+      "location": "path",
+      "appName": "PenalicheFront",
+      "target": ["web"],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": true,
+      "lazy": true,
+      "angulartics": false,
+      "prettier": true,
+      "projectName": "penaliche-front",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1 class="display-4 spacetitle">
+      <span translate>Listing des phrases</span>
+    </h1>
+    <app-loader [isLoading]="isLoading"></app-loader>
+    <div *ngFor="let phrase of phrases; let index=index; let odd=odd;" class="row" [hidden]="isLoading">
+      <div class="col-md-3 col-sm-0"> </div>
+      <div class="col-md-6 col-sm-12 border phrasespace bg-light" >
+          <div class="text-left phrase">{{ phrases[index].phraseLabel }}</div>
+          <div class="text-right font-weight-light font-italic text-secondary" >{{ phrases[index].auteur }} le {{ phrases[index].date }}</div>            
+      </div>
+    </div>
+  </div>
+</div>

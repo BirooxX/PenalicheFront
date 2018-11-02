@@ -4,18 +4,27 @@
       <span translate>Formulaire d'envoi</span>
     </h1>
       <div class="my-4">
-        <div>Auteur :</div>
-        <input #auteur>
+        <div class="row">
+          <div class="col-sm-0 col-md-3"></div>
+          <div class="col-sm-12 col-md-6 text-left">Auteur :</div>
+        </div>
+        <input #auteur class="col-sm-12 col-md-6"/>
       </div>
       <div class="my-4">
-        <div>Catégorie :</div>
-        <select #categorie>
-          <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
-        </select>
+        <div class="row">
+          <div class="col-sm-0 col-md-3"></div>
+          <div class="col-sm-12 col-md-6 text-left">Catégorie :</div>
+        </div>
+          <select #categorie class="col-sm-12 col-md-6">
+            <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+          </select>
       </div>
       <div class="my-4">
-        <div>Phrase : </div>
-        <textarea #phrase></textarea>
+        <div class="row">
+          <div class="col-sm-0 col-md-3"></div>
+          <div class="col-sm-12 col-md-6 text-left">Phrase : </div>
+        </div>
+        <textarea #phrase class="col-sm-12 col-md-6"></textarea>
       </div>
       <button class="btn btn-primary btn-lg" (click)="sendPhrase(auteur.value, categorie.value, phrase.value)">Envoyer</button>
   </div>
