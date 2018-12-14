@@ -9,6 +9,6 @@ export class ListService {
   constructor(private httpClient: HttpClient) {}
 
   getPhrases(): Observable<Phrase[]> {
-    return this.httpClient.get<Phrase[]>('http://penaliche-1160.appspot.com/phrase');
+    return this.httpClient.get<Phrase[]>('https://penaliche-1160.appspot.com/phrase');
   }
 }

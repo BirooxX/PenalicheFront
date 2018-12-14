@@ -9,7 +9,7 @@ export class SenderService {
   constructor(private httpClient: HttpClient) {}
 
   postPhrase(phrase: Phrase): Observable<string> {
-    return this.httpClient.post('penaliche-01.appspot.com/phrase', phrase).pipe(
+    return this.httpClient.post('https://penaliche-1160.appspot.com/phrase', phrase).pipe(
       map((body: any) => body.value),
       catchError(e => of('Error, could post phrase :-('))
     );

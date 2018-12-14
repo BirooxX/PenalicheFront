@@ -10,9 +10,9 @@ const HttpsProxyAgent = require('https-proxy-agent');
  */
 const proxyConfig = [
   {
-    context: '/api',
-    pathRewrite: { '^/api': '' },
-    target: 'https://api.chucknorris.io',
+    context: '/phrase',
+    pathRewrite: { '^/phrase': '' },
+    target: 'https://penaliche-1160.appspot.com',
     changeOrigin: true,
     secure: false
   }
@@ -32,7 +32,9 @@ function setupForCorporateProxy(proxyConfig) {
   if (proxyServer) {
     console.log(`Using corporate proxy server: ${proxyServer}`);
     agent = new HttpsProxyAgent(proxyServer);
-    proxyConfig.forEach(entry => { entry.agent = agent; });
+    proxyConfig.forEach(entry => {
+      entry.agent = agent;
+    });
   }
 
   return proxyConfig;
