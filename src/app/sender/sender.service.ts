@@ -14,4 +14,8 @@ export class SenderService {
       catchError(e => of('Error, could post phrase :-('))
     );
   }
+
+  loadPeople(): Observable<string[]> {
+    return this.httpClient.get<string[]>('https://penaliche-1160.appspot.com/people');
+  }
 }

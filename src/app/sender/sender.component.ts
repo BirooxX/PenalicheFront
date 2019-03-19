@@ -20,12 +20,14 @@ export class SenderComponent implements OnInit {
     { id: 5, name: "Retourne à l'école", enum: 'RETOURNE_A_L_ECOLE' }
   ];
 
+  names = [''];
   isLoading: boolean;
 
   constructor(private senderService: SenderService, private pipe: DatePipe, private router: Router) {}
 
   ngOnInit() {
     this.isLoading = false;
+    this.loadPeople();
   }
 
   sendPhrase(auteur: string, categorie: number, phrase: string) {
@@ -50,5 +52,12 @@ export class SenderComponent implements OnInit {
       .subscribe((res: string) => {
         console.log(res);
       });
+  }
+
+  loadPeople() {
+    this.senderService.loadPeople().subscribe((res: string[]) => {
+      console.log(res);
+      this.names = res;
+    });
   }
 }
