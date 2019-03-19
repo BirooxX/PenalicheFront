@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { Phrase } from '../shared/dto/phrase';
 
-import { QuoteService } from './quote.service';
+import { LastPhraseService } from './lastphrase.service';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +10,23 @@ import { QuoteService } from './quote.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  quote: string;
+  phrases: Phrase[];
   isLoading: boolean;
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private lastPhraseService: LastPhraseService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
+    this.lastPhraseService
+      .getLastPhrases()
       .pipe(
         finalize(() => {
           this.isLoading = false;
         })
       )
-      .subscribe((quote: string) => {
-        this.quote = quote;
+      .subscribe((res: Phrase[]) => {
+        console.log(res);
+        this.phrases = res;
       });
   }
 }

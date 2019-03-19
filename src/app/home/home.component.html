@@ -1,10 +1,16 @@
 <div class="container-fluid">
   <div class="jumbotron text-center">
     <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo"/>
-      <span translate>Hello world !</span>
+      <img class="logo" src="assets/Trump.png" alt="angular logo"/>
+      <span translate>Derniers Ajouts !</span>
     </h1>
     <app-loader [isLoading]="isLoading"></app-loader>
-    <q [hidden]="isLoading">{{quote}}</q>
+    <div *ngFor="let phrase of phrases; let index=index; let odd=odd;" class="row" [hidden]="isLoading">
+      <div class="col-md-3 col-sm-0"> </div>
+      <div class="col-md-6 col-sm-12 border phrasespace bg-light" >
+          <div class="text-left phrase">{{ phrases[index].phraseLabel }}</div>
+          <div class="text-right font-weight-light font-italic text-secondary" >{{ phrases[index].auteur}}, Le {{ phrases[index].date }}</div>
+      </div>
+    </div>
   </div>
 </div>
