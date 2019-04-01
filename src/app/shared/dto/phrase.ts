@@ -3,4 +3,5 @@ export interface Phrase {
   denonceur: string;
   phraseLabel: string;
   categorie: string;
+  contexte: string;
 }

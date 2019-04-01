@@ -4,6 +4,7 @@ import { SenderService } from './sender.service';
 import { Phrase } from '../shared/dto/phrase';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CONTEXT_NAME } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-sender',
@@ -23,22 +24,24 @@ export class SenderComponent implements OnInit {
   names = [''];
   isLoading: boolean;
 
-  constructor(private senderService: SenderService, private pipe: DatePipe, private router: Router) {}
-
-  ngOnInit() {
-    this.isLoading = false;
+  constructor(private senderService: SenderService, private pipe: DatePipe, private router: Router) {
     this.loadPeople();
   }
 
-  sendPhrase(auteur: string, categorie: number, phrase: string) {
+  ngOnInit() {
+    this.isLoading = false;
+  }
+
+  sendPhrase(auteur: string, categorie: number, phrase: string, contexte: string) {
     this.isLoading = true;
     console.log(auteur + this.categories[categorie].name + phrase);
 
-    var phraseToSend: Phrase = {
+    const phraseToSend: Phrase = {
       auteur: auteur,
       denonceur: 'Elie',
       phraseLabel: phrase,
-      categorie: this.categories[categorie].enum
+      categorie: this.categories[categorie].enum,
+      contexte: contexte
     };
 
     this.senderService
@@ -46,7 +49,7 @@ export class SenderComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.isLoading = false;
-          this.router.navigate(['/list']);
+          this.router.navigate(['/home']);
         })
       )
       .subscribe((res: string) => {
